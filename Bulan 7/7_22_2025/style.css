@@ -1,0 +1,62 @@
+* {
+    margin: 7px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+body {
+    display: flex;
+    background-color: antiquewhite;
+    flex-direction: column;
+}
+
+img {
+    width: 80px;
+    height: 50px;
+    padding: 1px;
+}
+
+section {
+    flex:1; /*Each column shares equal space*/
+    border: 2px solid black; /*size(px, rem), style(solid, dashed, dotted), colour(cam biase)*/
+    padding: 1rem;
+    text-align: center;
+}
+
+.car-show-system {
+    display: flex;
+    background-color:azure;
+    margin: 0px 2rem 2rem 2rem;
+}
+
+
+.car-card {
+    flex: 1;
+    align-content: space-between;
+    border: 2px solid black;
+    border-radius: 6px;
+    border-radius: 1rem;
+    margin: 4px;
+    padding: 2px;
+    min-height: 10rem;
+    max-height: none;
+}
+
+.showroom-card {
+   margin: 1rem;
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 2rem;
+}
+
+button{
+    background-color: cadetblue;
+    color:antiquewhite;
+    font-size: 18px;
+    min-width: 12rem;
+    min-height: 3rem;
+    max-width: 16rem;
+    max-height: 3rem;
+    border-radius: 1rem;
+}

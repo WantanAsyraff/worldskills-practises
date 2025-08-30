@@ -1,0 +1,72 @@
+[
+    {
+        "name": "jason",
+        "preference": "audi",
+        "cash": 500000,
+        "age": 34,
+        "image": "client_1.jpg"
+    },
+    {
+        "name": "amelia",
+        "preference": "porsche",
+        "cash": 750000,
+        "age": 29,
+        "image": "client_2.jpg"
+    },
+    {
+        "name": "ryan",
+        "preference": "bmw",
+        "cash": 620000,
+        "age": 42,
+        "image": "client_3.jpg"
+    },
+    {
+        "name": "sophia",
+        "preference": "audi",
+        "cash": 480000,
+        "age": 27,
+        "image": "client_4.jpg"
+    },
+    {
+        "name": "daniel",
+        "preference": "volkswagen",
+        "cash": 450000,
+        "age": 38,
+        "image": "client_5.jpg"
+    },
+    {
+        "name": "nina",
+        "preference": "bmw",
+        "cash": 800000,
+        "age": 31,
+        "image": "client_6.jpg"
+    },
+    {
+        "name": "kevin",
+        "preference": "porsche",
+        "cash": 900000,
+        "age": 45,
+        "image": "client_7.jpg"
+    },
+    {
+        "name": "lisa",
+        "preference": "audi",
+        "cash": 510000,
+        "age": 30,
+        "image": "client_8.jpg"
+    },
+    {
+        "name": "harith",
+        "preference": "volkswagen",
+        "cash": 400000,
+        "age": 33,
+        "image": "client_9.jpg"
+    },
+    {
+        "name": "yuna",
+        "preference": "bmw",
+        "cash": 580000,
+        "age": 26,
+        "image": "client_10.jpg"
+    }
+]

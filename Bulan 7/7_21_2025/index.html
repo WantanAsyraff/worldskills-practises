@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz app</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <!--Vue3 API-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <!--App structure-->
+    <div class="app">
+        <h1>Quiz App</h1>
+        <section>
+            <div class="card-container">
+                <div class="question-stat">
+                    <h5>Mode = {{ mode }} </h5>
+                    <h5>Question = {{ current_question + 1}} </h5>
+                    <h5>Score =  {{ score }} </h5>
+                    <h5>Time = {{ time }} </h5>
+                </div>
+                <div class="options-section">
+                    <!--Vue 3 uses @click instead of onclick="func()"-->
+                    <button @click="pause">Pause</button>
+                    <button @click="restart">Restart</button>
+                    <button @click="exit">Exit</button>
+                </div>
+                <div class="question-section">
+                    <h4> {{ casual_questions[current_question].text }} </h4> <!--array[index].keyword-->
+                    <button @click="questionAnswered()"> {{ casual_questions[current_question].choices[0] }} </button>
+                    <button @click="questionAnswered()"> {{ casual_questions[current_question].choices[1] }} </button>
+                    <button @click="questionAnswered()"> {{ casual_questions[current_question].choices[2] }} </button>
+                    <button @click="questionAnswered()"> {{ casual_questions[current_question].choices[3] }} </button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer></footer>
+    <script src="app.js"></script>
+</body>
+</html>

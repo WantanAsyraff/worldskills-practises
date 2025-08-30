@@ -1,0 +1,22 @@
+[
+    {
+        "brand": "porsche",
+        "price": 650000,
+        "stock": 4
+    },
+    {
+        "brand": "volkswagen",
+        "price": 180000,
+        "stock": 6
+    },
+    {
+        "brand": "audi",
+        "price": 300000,
+        "stock": 5
+    },
+    {
+        "brand": "bmw",
+        "price": 250000,
+        "stock": 3
+    }
+]
