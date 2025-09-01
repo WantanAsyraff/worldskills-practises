@@ -1,0 +1,157 @@
+$(document).ready(function(){
+    //Init local storage array and current city holding varibale
+    var cities = [];
+    var currentCity;
+
+    //Init day.js
+    var now = dayjs();
+    var currentDate = now.format("ddd MMM. D, YYYY");
+
+    //API Query Parameters
+    var baseURL = "https://api.openweathermap.org/data/2.5/";
+    var APIKey = "f4d6848eb3a488816cecbd2392d8a108";
+    var units = "imperial";
+
+    //Replacement icon array
+    var icons = [
+        {
+      code: "01",
+      day: "fas fa-sun",
+      night: "fas fa-moon"
+    },
+    {
+      code: "02",
+      day: "fas fa-cloud-sun",
+      night: "fas fa-cloud-moon"
+    },
+    {
+      code: "03",
+      day: "fas fa-cloud",
+      night: "fas fa-cloud"
+    },
+    {
+      code: "04",
+      day: "fas fa-cloud-sun",
+      night: "fas fa-cloud-moon"
+    },
+    {
+      code: "09",
+      day: "fas fa-cloud-rain",
+      night: "fas fa-cloud-rain"
+    },
+    {
+      code: "10",
+      day: "fas fa-cloud-showers-heavy",
+      night: "fas fa-cloud-showers-heavy"
+    },
+    {
+      code: "11",
+      day: "fas fa-bolt",
+      night: "fas fa-bolt"
+    },
+    {
+      code: "13",
+      day: "fas fa-snowflake",
+      night: "fas fa-snowflake"
+    },
+    {
+      code: "50",
+      day: "fas fa-smog",
+      night: "fas fa-smog"
+    }
+    ];
+
+    //Initialize application
+    init();
+
+    function init(){
+        //Set current date in page header
+        $("#today").text(currentDate);
+
+        //Set inttial search history visibility conditions
+        if (window.innerWidth >= 578) {
+            $("#search-history").addClass("show");
+            $("#collapse-search-history").hide();
+        }
+
+        // Load cities in local storage back into application
+        getSearchHistory();
+
+        // If no cities are saved, load weather data for New York City; otherwise, get weather data for the last searched city and render all saved cities back into the search history
+        if (cities.length === 0){
+            getWeather("New York");
+        } else {
+            var lastCityIndex = cities.length - 1;
+            getWeather(cities[lastCityIndex]);
+
+            $.each(cities, function(index, city) {
+                displayCity(city);
+            });
+        }
+    }
+
+    //Get weather and 5 day forecast data from API
+    function getWeather(city) {
+        var responseData = {};
+
+        //API Call #1: Get current weather
+        $.ajax({
+            url: baseURL + "weather",
+            method: "GET",
+            data: {
+                q: city,
+                units: units,
+                appid: APIKey
+            }
+        }).then(function(response){
+            responseData.current = response;
+
+            // Save the coordinates from the response to request UV index data
+            var coordinates = {
+                lat: responseData.current.coord.lat,
+                lon: responseData.current.coord.lon
+            }
+
+            getUVIndex(coordinates);
+            displayCurrentWeather(responseData);
+        });
+
+        //API Call #2: Get 5 day forecast
+        $.ajax({
+            url: baseURL + "forecast",
+            method: "GET",
+            data: {
+                q: city,
+                units: units,
+                appid: APIKey
+            }
+        }).then(function(response){
+            responseData.forcast = response;
+            displayForecast(responseData);
+        });
+    }
+
+    //Get UV index data using coordinates returned by the API in the current weather app
+    function getUVindex(coordinates){
+        $.ajax({
+            url: baseURL + "uvi",
+            method: "GET",
+            data: {
+                lat: coordinates.lat,
+                lon: coordinates.lon,
+                appid: APIKey
+            }
+        }).then(function(reponse) {
+            displayUV(response);
+        });
+    }
+
+    //Replace icon from API with equivalent icon from font Awesome
+    function replaceIcon(iconCode){
+
+        //Parse data used in replacing the icon
+        var number = iconCode.slice(0, 2);
+        var dayOrNight = iconCode.slice(2);
+        var currentHour = dayjs().hour();
+    }
+});
